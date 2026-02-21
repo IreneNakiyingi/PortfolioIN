@@ -127,6 +127,15 @@ app.post('/api/contact', (req, res) => {
         res.status(200).json({ success: true, message: "Email Sent!" });
     });
 });
+// Manually serve admin.html to ensure it loads on Render
+app.get('/admin.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'admin.html'));
+});
+
+// Optional: Allow access via just /admin
+app.get('/admin', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'admin.html'));
+});
 
 // --- 5. START SERVER ---
 app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
