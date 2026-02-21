@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio | Health, Tech, Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">MyPortfolio</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#health">Health</a></li>
+            <li><a href="#tech">Tech</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#about">About Me</a></li>
+        </ul>
+    </nav>
+
+    <header id="home" class="hero">
+        <h1>Transforming Ideas into Impact</h1>
+        <p>Expertise in Health, Tech, and Consultancy</p>
+    </header>
+
+    <main class="section-padding">
+        
+        <section id="health" class="portfolio-block">
+            <h2 class="category-title">Healthcare Solutions</h2>
+            <div id="health-grid" class="grid">
+                <p class="loader">Loading health projects...</p>
+            </div>
+        </section>
+
+        <section id="tech" class="portfolio-block">
+            <h2 class="category-title">Technical Development</h2>
+            <div id="tech-grid" class="grid">
+                <p class="loader">Loading tech projects...</p>
+            </div>
+        </section>
+
+        <section id="research" class="portfolio-block">
+            <h2 class="category-title">Research & Consultancy</h2>
+            <div id="research-grid" class="grid">
+                <p class="loader">Loading research projects...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <section id="about" class="about-section section-padding">
+        <div class="container">
+            <h2 class="section-title">Education & Credentials</h2>
+            <div class="credentials-grid">
+                <div class="cred-card">
+                    <h3>🎓 Education</h3>
+                    <ul>
+                        <li><strong>Master of Science</strong> - University Name <br><small>Specialization | 2020</small></li>
+                        <li><strong>Bachelor of Science</strong> - University Name <br><small>Major | 2018</small></li>
+                    </ul>
+                </div>
+                <div class="cred-card">
+                    <h3>📜 Certifications</h3>
+                    <ul>
+                        <li>Data Science Professional Certificate (IBM)</li>
+                        <li>Certified Health Consultant (CHC)</li>
+                        <li>Full Stack Web Development (Meta)</li>
+                    </ul>
+                </div>
+                <div class="cred-card">
+                    <h3>🤝 Memberships</h3>
+                    <ul>
+                        <li>Member, Health Informatics Association</li>
+                        <li>Associate, Tech Research Council</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2 style="text-align: center; color: white;">Testimonials</h2>
+        <div class="slider-container">
+            <div class="testimonial-slide active">
+                <p>"An exceptional bridge between clinical health needs and technical solutions."</p>
+                <span>- Dr. Jane Smith, Clinical Director</span>
+            </div>
+            <div class="testimonial-slide">
+                <p>"The data insights provided were instrumental in our latest research publication."</p>
+                <span>- John Doe, Lead Researcher</span>
+            </div>
+            <button id="prevBtn">❮</button>
+            <button id="nextBtn">❯</button>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Let's Connect</h3>
+                <p><strong>📍 Address:</strong> Kampala, Uganda</p>
+                <p><strong>📧 Email:</strong> iryntracy@gmail.com</p>
+                <p class="consultancy-note">
+                    Available for:  
+                    <ul style="text-decoration: none;">
+                        <li style="list-style: none;">
+                            Health Community Education
+                        </li>
+                        <li style="list-style: none;">
+                            Clinical Data Analysis
+                        </li>
+                        <li style="list-style: none;">
+                            Research Consultancies
+                        </li>
+                        <li style="list-style: none;">
+                            Health Tech Projects
+                        </li>
+                    </ul>
+                </p>
+            </div>
+
+            <form id="contactForm">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email Address" required>
+                <textarea id="message" placeholder="How can I help you?" required></textarea>
+                <button type="submit" id="submitBtn">Send Message</button>
+            </form>
+        </div>
+    </footer>
+
+    <a href="assets/IRENE NAKIYINGI_CV_MH" class="fab" download title="Download CV">
+        <span>CV</span>
+    </a>
+
+    <div id="toast" class="toast">Message Sent Successfully!</div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
