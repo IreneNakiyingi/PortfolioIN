@@ -8,9 +8,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // --- 1. CONFIGURATION ---
-const ADMIN_PASSWORD = "YourSecurePassword123"; // CHANGE THIS!
+const ADMIN_PASSWORD = "Treasure12"; // CHANGE THIS!
 const MY_EMAIL = "iryntracy@gmail.com"; 
-const SENDER_EMAIL = "your-email@gmail.com"; // Your Gmail
+const SENDER_EMAIL = "iryntracy@gmail.com"; // Your Gmail
 const SENDER_PASS = "your-app-password";    // Your Google App Password
 
 // --- 2. MIDDLEWARE ---
