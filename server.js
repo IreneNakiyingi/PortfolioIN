@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "a_backup_password"; // CHANGE THIS!
 const MY_EMAIL = "iryntracy@gmail.com"; 
 const SENDER_EMAIL = "iryntracy@gmail.com"; // Your Gmail
-const SENDER_PASS = "your-app-password";    // Your Google App Password
+const SENDER_PASS = process.env.SENDER_PASS; // Use Render Env Var for this!
 
 // --- 2. MIDDLEWARE ---
 app.use(express.static('public')); 
@@ -53,6 +53,18 @@ db.serialize(() => {
 });
 
 // --- 4. ROUTES ---
+// NEW
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
+
+app.get('/dashboard', (req, res) => {
+    if (req.session.isAdmin) {
+        res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+    } else {
+        res.redirect('/login');
+    }
+});
 
 // Admin Login
 app.post('/api/login', (req, res) => {
@@ -94,14 +106,9 @@ app.delete('/api/projects/:id', checkAuth, (req, res) => {
 // UPDATE an existing project (Protected)
 app.put('/api/projects/:id', checkAuth, (req, res) => {
     const id = req.params.id;
-    const { category, subcategory, title, description, tools, link, image } = req.body;
-    
-    const sql = `UPDATE projects SET 
-                 category = ?, subcategory = ?, title = ?, 
-                 description = ?, tools = ?, link = ?, image = ? 
-                 WHERE id = ?`;
-
-    db.run(sql, [category, subcategory, title, description, tools, link, image, id], function(err) {
+    const { category, subcategory, title, role, description, tools, link, image } = req.body;
+    const sql = `UPDATE projects SET category=?, subcategory=?, title=?, role=?, description=?, tools=?, link=?, image=? WHERE id=?`;
+    db.run(sql, [category, subcategory, title, role, description, tools, link, image, id], function(err) {
         if (err) return res.status(500).json({ error: err.message });
         res.json({ message: "Updated successfully", changes: this.changes });
     });
@@ -114,6 +121,7 @@ const transporter = nodemailer.createTransport({
 });
 
 app.post('/api/contact', (req, res) => {
+const transporter = nodemailer.createTransport({ service: 'gmail', auth: { user: SENDER_EMAIL, pass: SENDER_PASS }});
     const { name, email, message } = req.body;
     const mailOptions = {
         from: email,
@@ -127,10 +135,6 @@ app.post('/api/contact', (req, res) => {
         res.status(200).json({ success: true, message: "Email Sent!" });
     });
 });
-// Serve the Login Page
-app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'login.html'));
-});
 
 // Serve the Dashboard (Protected)
 app.get('/dashboard', (req, res) => {
@@ -140,16 +144,7 @@ app.get('/dashboard', (req, res) => {
         res.redirect('/login');
     }
 });
-// Login API
-app.post('/api/login', (req, res) => {
-    const { password } = req.body;
-    if (password === ADMIN_PASSWORD) {
-        req.session.isAdmin = true;
-        res.json({ success: true });
-    } else {
-        res.status(401).json({ success: false });
-    }
-});
+
 
 // --- 5. START SERVER ---
 app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
