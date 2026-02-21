@@ -123,12 +123,34 @@ nav a:hover { color: var(--red); }
     font-size: 0.95rem;
     margin-bottom: 1.5rem;
 }
+/* Subcategory Tag */
+.tag {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-slate);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+}
+
+/* Your New Role Badge */
+.role-badge {
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 .cred-card{
     border: #e63946 solid 1px;
     margin-bottom: 5px;
     border-radius: 15px;
 
 }
+
 /* --- 6. TESTIMONIAL SLIDER --- */
 .testimonials { background: var(--dark-blue); color: var(--white); padding: 80px 20px; }
 .slider-container { max-width: 800px; margin: auto; text-align: center; position: relative; min-height: 200px; }
@@ -180,7 +202,9 @@ button.btn-primary:hover { background: var(--primary-hover); transform: translat
     transform: translateX(-50%);
     border-left: 5px solid var(--red);
 }
-.toast.show { visibility: visible; animation: slideUp 0.5s, fadeOut 0.5s 2.5s; }
+.toast.show { 
+    visibility: visible; 
+    animation: slideUp 0.5s, fadeOut 0.5s 2.5s; }
 
 .fab {
     position: fixed; bottom: 30px; right: 30px;
@@ -205,3 +229,4 @@ button.btn-primary:hover { background: var(--primary-hover); transform: translat
 /* Animations */
 @keyframes slideUp { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
 @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+@keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }

@@ -65,9 +65,11 @@ async function fetchProjects() {
                         <img src="${p.image || 'https://via.placeholder.com/400x250'}" alt="${p.title}">
                     </div>
                     <div class="card-body">
-                        <span class="tag">${p.subcategory}</span>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <span class="tag">${p.subcategory}</span>
+                            ${p.role ? `<span class="role-badge">${p.role}</span>` : ''}
+                        </div>
                         <h3>${p.title}</h3>
-                        <p><strong>Role:</strong> ${p.role}</p>
                         <p>${p.description}</p>
                         <div class="tools-list"><small>🛠 ${p.tools}</small></div>
                         <a href="${p.link}" target="_blank" class="btn btn-primary" style="margin-top:15px; display:block; text-align:center;">View Project</a>

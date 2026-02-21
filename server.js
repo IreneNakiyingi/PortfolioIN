@@ -127,14 +127,28 @@ app.post('/api/contact', (req, res) => {
         res.status(200).json({ success: true, message: "Email Sent!" });
     });
 });
-// Manually serve admin.html to ensure it loads on Render
-app.get('/admin.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'admin.html'));
+// Serve the Login Page
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
-// Optional: Allow access via just /admin
-app.get('/admin', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'admin.html'));
+// Serve the Dashboard (Protected)
+app.get('/dashboard', (req, res) => {
+    if (req.session.isAdmin) {
+        res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+    } else {
+        res.redirect('/login');
+    }
+});
+// Login API
+app.post('/api/login', (req, res) => {
+    const { password } = req.body;
+    if (password === ADMIN_PASSWORD) {
+        req.session.isAdmin = true;
+        res.json({ success: true });
+    } else {
+        res.status(401).json({ success: false });
+    }
 });
 
 // --- 5. START SERVER ---
